@@ -1,0 +1,24 @@
+{
+  "name": "tcg-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salasc3/TDZ-site1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/salasc3/TDZ-site1/issues"
+  },
+  "homepage": "https://github.com/salasc3/TDZ-site1#readme",
+  "dependencies": {
+    "puppeteer": "^25.1.0"
+  }
+}

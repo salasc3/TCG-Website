@@ -1,0 +1,8 @@
+node_modules/
+temporary screenshots/
+*.png
+package-lock.json
+
+design-extract-output/
+.DS_Store
+*.mp4
