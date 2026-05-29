@@ -1,0 +1,43 @@
+name: Deploy to SiteGround
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install rsync
+        run: sudo apt-get install -y rsync
+
+      - name: Write SSH private key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p 18765 -H "${{ secrets.SFTP_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Deploy via rsync
+        run: |
+          rsync -avz --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.claude' \
+            --exclude='node_modules' \
+            --exclude='serve.mjs' \
+            --exclude='screenshot.mjs' \
+            --exclude='package.json' \
+            --exclude='package-lock.json' \
+            --exclude='CLAUDE.md' \
+            --exclude='Laguna_Studio_Master_Style_Guide-v2.md' \
+            --exclude='.gitignore' \
+            --exclude='.DS_Store' \
+            --exclude='temporary screenshots' \
+            --exclude='design-extract-output' \
+            -e "ssh -p 18765 -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
+            ./ ${{ secrets.SFTP_USERNAME }}@${{ secrets.SFTP_HOST }}:/home/customer/www/javiers224.sg-host.com/public_html/
