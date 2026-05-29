@@ -20,7 +20,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -p 18765 -H "${{ secrets.SFTP_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+          ssh-keyscan -p 18765 -H "${{ secrets.SFTP_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null || true
 
       - name: Deploy via rsync
         run: |
@@ -40,4 +40,4 @@ jobs:
             --exclude='temporary screenshots' \
             --exclude='design-extract-output' \
             -e "ssh -p 18765 -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
-            ./ ${{ secrets.SFTP_USERNAME }}@${{ secrets.SFTP_HOST }}:/home/customer/www/javiers224.sg-host.com/public_html/
+            ./ ${{ secrets.SFTP_USERNAME }}@${{ secrets.SFTP_HOST }}:/home/${{ secrets.SFTP_USERNAME }}/www/thechilamgroup.com/public_html/
