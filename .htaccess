@@ -1,0 +1,32 @@
+# Force HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Remove index.html from URL
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s/+index\.html[\s?] [NC]
+RewriteRule ^index\.html$ / [R=301,L]
+
+# Default document
+DirectoryIndex index.html
+
+# 404 fallback
+ErrorDocument 404 /index.html
+
+# Cache static assets for 1 year
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg        "access plus 1 year"
+  ExpiresByType image/jpg         "access plus 1 year"
+  ExpiresByType image/png         "access plus 1 year"
+  ExpiresByType image/svg+xml     "access plus 1 year"
+  ExpiresByType image/avif        "access plus 1 year"
+  ExpiresByType video/mp4         "access plus 1 year"
+  ExpiresByType text/css          "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# Compress text responses
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml
+</IfModule>
