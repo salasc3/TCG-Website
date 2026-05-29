@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NUCLEO Projects — The Chilam Group</title>
+  <link rel="icon" href="Brand%20Assets/TCG%20Logomark.svg" type="image/svg+xml" />
   <meta name="description" content="Four vertically integrated operations across the Yucatan Peninsula. Each runs independently. Together they compound into a self-reinforcing portfolio." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,7 +25,7 @@
         <a href="projects.html" class="active">NUCLEO Projects</a>
         <ul class="nav-dropdown">
           <li><a href="xtc.html">XTC Dive Center</a></li>
-          <li><a href="casa-nahal.html">Casa Nahal</a></li>
+          <li><a href="casa-nahal.html">The Dark Zone</a></li>
           <li><a href="tour-operation.html">Yucatan Dive Trek</a></li>
           <li><a href="scorpio-divers.html">Scorpio Divers</a></li>
         </ul>
@@ -190,7 +191,7 @@
         <span class="svc-item-num">02</span>
         <div>
           <h3 class="svc-item-title">Commercial <em>Compounding</em></h3>
-          <p class="svc-item-desc">Yucatan Dive Trek owns the inbound distribution channel for all four venues. Scorpio Divers certifies divers who then book XTC expeditions. XTC guests stay at Casa Nahal. Casa Nahal guests join multi-day expeditions. Each client touchpoint generates revenue across multiple ventures without additional acquisition cost.</p>
+          <p class="svc-item-desc">Yucatan Dive Trek owns the inbound distribution channel for all four venues. Scorpio Divers certifies divers who then book XTC expeditions. XTC guests stay at The Dark Zone. Guests join multi-day expeditions. Each client touchpoint generates revenue across multiple ventures without additional acquisition cost.</p>
         </div>
         <span class="svc-item-cat">Revenue Model</span>
       </div>
@@ -207,6 +208,136 @@
     </div>
   </div>
 </section>
+
+
+<!-- ═══════════════════════════════════════
+     INFRASTRUCTURE — modal trigger cards
+     ═══════════════════════════════════════ -->
+<section style="padding: 0 0 var(--section-gap);">
+  <div class="container">
+    <div class="services-header" style="margin-bottom: 2.5rem;">
+      <div>
+        <p class="eyebrow reveal d1">The Infrastructure</p>
+        <h2 class="section-h2 reveal d2">How <em>NUCLEO</em> operates</h2>
+      </div>
+      <p class="section-body reveal d3" style="max-width: 360px;">
+        The two service models that power the portfolio. Click any diagram for a full view and explanation.
+      </p>
+    </div>
+
+    <div class="svg-trigger-grid reveal d2">
+
+      <button class="svg-trigger" onclick="openSvgModal('iaas')">
+        <div class="svg-trigger-thumb">
+          <img src="Brand%20Assets/media-images%20%28alt%29/IaaS.svg" alt="IaaS framework" />
+        </div>
+        <div class="svg-trigger-label">
+          <span class="bento-tag">Investment as a Service</span>
+          <span class="svg-open-hint">Open &rarr;</span>
+        </div>
+      </button>
+
+      <button class="svg-trigger" onclick="openSvgModal('oaas_on')">
+        <div class="svg-trigger-thumb">
+          <img src="Brand%20Assets/media-images%20%28alt%29/OaaS-OnSite.svg" alt="OaaS on-site" />
+        </div>
+        <div class="svg-trigger-label">
+          <span class="bento-tag">On-Site Operations</span>
+          <span class="svg-open-hint">Open &rarr;</span>
+        </div>
+      </button>
+
+      <button class="svg-trigger" onclick="openSvgModal('oaas_off')">
+        <div class="svg-trigger-thumb">
+          <img src="Brand%20Assets/media-images%20%28alt%29/OaaS-OffSite.svg" alt="OaaS off-site" />
+        </div>
+        <div class="svg-trigger-label">
+          <span class="bento-tag">Off-Site Centralized Infrastructure</span>
+          <span class="svg-open-hint">Open &rarr;</span>
+        </div>
+      </button>
+
+      <button class="svg-trigger" onclick="openSvgModal('tcg_serv')">
+        <div class="svg-trigger-thumb">
+          <img src="Brand%20Assets/media-images%20%28alt%29/TCG-Serv.svg" alt="TCG service architecture" />
+        </div>
+        <div class="svg-trigger-label">
+          <span class="bento-tag">TCG Service Architecture</span>
+          <span class="svg-open-hint">Open &rarr;</span>
+        </div>
+      </button>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SVG MODAL LIGHTBOX
+     ═══════════════════════════════════════ -->
+<div class="svg-modal-overlay" id="svgModal" role="dialog" aria-modal="true">
+  <div class="svg-modal-backdrop" onclick="closeSvgModal()"></div>
+  <div class="svg-modal-panel">
+    <button class="svg-modal-close" onclick="closeSvgModal()" aria-label="Close">&#x2715;</button>
+    <div class="svg-modal-img">
+      <img id="modalImg" src="" alt="" />
+    </div>
+    <div class="svg-modal-info">
+      <p class="eyebrow" id="modalTag" style="color: var(--teal-500); margin-bottom: 0.5rem;"></p>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+var svgData = {
+  iaas: {
+    tag: 'IaaS',
+    title: 'Investment as a Service',
+    src:  'Brand%20Assets/media-images%20%28alt%29/IaaS.svg',
+    desc: 'The IaaS model provides the legal and financial guardrails required for capital to cross borders safely. TCG designs multi-entity structures that isolate legacy liabilities while ensuring clean USD-based revenue paths for international investors. Stakeholders participate in specific NUCLEO assets while benefiting from centralized fund governance — the transparency of boutique investment with institutional reporting security.'
+  },
+  oaas_on: {
+    tag: 'OaaS / On-Site',
+    title: 'On-Site Operations',
+    src:  'Brand%20Assets/media-images%20%28alt%29/OaaS-OnSite.svg',
+    desc: 'The on-site team focuses exclusively on in-situ delivery. Mandates are limited to guest relations, hospitality standards, safety protocols, and local storytelling. By eliminating back-office functions from the experience site, TCG ensures maximum service quality at remote locations, preventing the administrative collapse that typically accompanies geographic distance.'
+  },
+  oaas_off: {
+    tag: 'OaaS / Off-Site',
+    title: 'Off-Site Centralized Infrastructure',
+    src:  'Brand%20Assets/media-images%20%28alt%29/OaaS-OffSite.svg',
+    desc: 'Specialized business functions consolidate at TCG headquarters. Individual sites access the PROTEUS stack (a real-time data lake feeding unit economics and logistics), institutional HR and payroll, and executive oversight. This shared overhead model allows remote operations to leverage senior-level strategic planning and financial governance they could not afford independently.'
+  },
+  tcg_serv: {
+    tag: 'Architecture',
+    title: 'TCG Service Architecture',
+    src:  'Brand%20Assets/media-images%20%28alt%29/TCG-Serv.svg',
+    desc: 'The full TCG service architecture integrates IaaS and OaaS into a single management mandate. Capital structure, on-site operations, and centralized back-office functions operate under one reporting line. The result is a vertically integrated operating model designed for high-friction environments where conventional management structures fragment and fail.'
+  }
+};
+
+function openSvgModal(key) {
+  var d = svgData[key];
+  document.getElementById('modalTag').textContent = d.tag;
+  document.getElementById('modalTitle').textContent = d.title;
+  document.getElementById('modalDesc').textContent = d.desc;
+  document.getElementById('modalImg').src = d.src;
+  document.getElementById('modalImg').alt = d.title;
+  document.getElementById('svgModal').classList.add('active');
+  document.body.classList.add('modal-open');
+}
+
+function closeSvgModal() {
+  document.getElementById('svgModal').classList.remove('active');
+  document.body.classList.remove('modal-open');
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeSvgModal();
+});
+</script>
 
 
 <!-- ═══════════════════════════════════════
@@ -247,7 +378,7 @@
       <div class="footer-col">
         <h4>NUCLEO Projects</h4>
         <a href="xtc.html">XTC Dive Center</a>
-        <a href="casa-nahal.html">Casa Nahal</a>
+        <a href="casa-nahal.html">The Dark Zone</a>
         <a href="tour-operation.html">Yucatan Dive Trek</a>
         <a href="scorpio-divers.html">Scorpio Divers</a>
       </div>
@@ -260,6 +391,7 @@
     </div>
     <div class="footer-bottom">
       <p class="footer-copy">&copy; 2026 The Chilam Group. All rights reserved.</p>
+      <p class="footer-copy">Site by <a href="https://lagunastudio.co/" target="_blank" rel="noopener" class="footer-studio-link">Laguna Studio</a></p>
       <p class="footer-copy">Playa del Carmen, Quintana Roo, Mexico</p>
     </div>
   </div>
